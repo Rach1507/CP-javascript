@@ -1,18 +1,22 @@
-let perm = (str1, str2) => {
+var perm = (s, t) => {
 
-    let freq = new Array(97).fill(0);
+    if (s.length !== t.length) return false;
 
-    for (let character in str1) {
-        freq[character.charCodeAt(0)]++;
+    let freq = new Array(26).fill(0);
+
+    for (let i = 0; i < s.length; i++) {
+        freq[s.charCodeAt(i) - 97]++;
     }
-    for (let character in str2) {
-        freq[character.charCodeAt(0)]--;
+
+    for (let x = 0; x < t.length; x++) {
+        freq[t.charCodeAt(x) - 97]--;
     }
-    for (let i = 0; i < 97; i++) {
-        if (freq[i] != 0) return false;
+
+    for (let i = 0; i < 26; i++) {
+        if (freq[i] !== 0) return false;
     }
 
     return true;
-}
 
-console.log(perm("hel", "leh "))
+};
+console.log(perm("car", "rat"))
